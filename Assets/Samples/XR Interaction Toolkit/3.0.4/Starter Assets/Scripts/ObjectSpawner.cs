@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
-
+using System.Collections;
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
     /// <summary>
@@ -9,6 +9,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     public class ObjectSpawner : MonoBehaviour
     {
+        public static ObjectSpawner inst;
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
@@ -157,6 +158,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// </summary>
         void Awake()
         {
+            inst = this;
             EnsureFacingCamera();
         }
 
@@ -217,11 +219,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             BurstMathUtility.ProjectOnPlane(forward, spawnNormal, out var projectedForward);
             newObject.transform.rotation = Quaternion.LookRotation(projectedForward, spawnNormal);
 
-            if (m_ApplyRandomAngleAtSpawn)
-            {
-                var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
-                newObject.transform.Rotate(Vector3.up, randomRotation);
-            }
+            
 
             if (m_SpawnVisualizationPrefab != null)
             {
@@ -231,7 +229,15 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             objectSpawned?.Invoke(newObject);
+            Destroy(gameObject);
             return true;
         }
+        public static void heyIamalivebtw()
+        {
+            Destroy(inst.gameObject);
+        }
     }
+
+    
+   
 }

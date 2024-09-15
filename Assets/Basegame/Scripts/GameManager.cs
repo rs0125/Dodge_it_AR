@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    bool gameended = false;
+    public bool gameended = false;
     public void EndGame()
     {
 
@@ -13,13 +13,16 @@ public class GameManager : MonoBehaviour
             gameended = true;
             Debug.Log("game over");
 
-            Invoke("Restart", 1F);
+            Invoke("Restart", 2F);
         }
         
     }
+
     void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        spawnkumar.spawn = false;
+        Destroy(spawnkumar.cur);
+        
     }
    }
 
