@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playercollision : MonoBehaviour {
+public class PlayerCollision : MonoBehaviour {
 
-    public movement move;
+    public PlayerMovement move;
     public Rigidbody rb;
-    int backwardforce = 50;
+    int backwardforce = 1;
 
     int count = 0;
     private void OnCollisionEnter(Collision collision)
@@ -15,7 +15,6 @@ public class playercollision : MonoBehaviour {
         {
             count += 1;
             rb.AddForce(0, 0, -backwardforce, ForceMode.VelocityChange);
-            backwardforce -= 15;
 
         }
 

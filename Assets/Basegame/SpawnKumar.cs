@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class spawnkumar : MonoBehaviour 
+public class SpawnKumar : MonoBehaviour 
 {
 
     public GameObject MyObject;

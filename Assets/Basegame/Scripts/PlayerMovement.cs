@@ -5,13 +5,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
-public class movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public float ForwardForce = 2000f;
-    public float KeySideForce = 500f;
-    public float ButtonSideForce = 500f;
+    public float ForwardForce = 50f;
+    public float SideForce = 50f;
     public MyButton left;
     public MyButton right;
 
@@ -28,25 +27,25 @@ public class movement : MonoBehaviour
 
         if (right.isPressed)
         {
-            rb.AddForce(transform.right*ButtonSideForce * Time.deltaTime);
+            rb.AddForce(transform.right* SideForce * Time.deltaTime);
         }
 
 
         if (left.isPressed)
         {
-            rb.AddForce(-transform.right * ButtonSideForce * Time.deltaTime);
+            rb.AddForce(-transform.right * SideForce * Time.deltaTime);
         }
 
 
 
         if (Input.GetKey("d"))
         {
-            rb.AddForce(KeySideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(SideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("a"))
         {
-            rb.AddForce(-KeySideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(-SideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
 

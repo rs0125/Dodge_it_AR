@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
-        spawnkumar.spawn = false;
-        Destroy(spawnkumar.cur);
+        SpawnKumar.spawn = false;
+        Destroy(SpawnKumar.cur);
         
     }
    }
